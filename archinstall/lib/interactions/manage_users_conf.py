@@ -94,7 +94,7 @@ class UserList(ListManager):
 			return None
 
 		choice = Menu(
-			str(_('Should "{}" be a superuser (sudo)?')).format(username), Menu.yes_no(),
+			str(_('Should "{}" be a superuser (sudo)?')).format(username), Menu.yes(Y),
 			skip=False,
 			default_option=Menu.yes(),
 			clear_screen=False,
