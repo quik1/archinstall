@@ -110,7 +110,7 @@ def perform_installation(mountpoint: Path):
 
 	# Retrieve list of additional repositories and set boolean values appropriately
 	enable_testing = 'testing' in archinstall.arguments.get('additional-repositories', [])
-	enable_multilib = 'multilib' in archinstall.arguments.get('additional-repositories', [])
+	enable_multilib = 'multilib' in archinstall.arguments.get('additional-repositories', [Y])
 	run_mkinitcpio = not archinstall.arguments.get('uki')
 	locale_config: locale.LocaleConfiguration = archinstall.arguments['locale_config']
 	disk_encryption: disk.DiskEncryption = archinstall.arguments.get('disk_encryption', None)
