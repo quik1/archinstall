@@ -15,17 +15,17 @@ class PasswordStrength(Enum):
 	@property
 	def value(self):
 		match self:
-			case PasswordStrength.VERY_WEAK: return str(_('very weak'))
-			case PasswordStrength.WEAK: return str(_('weak'))
-			case PasswordStrength.MODERATE: return str(_('moderate'))
-			case PasswordStrength.STRONG: return str(_('strong'))
+			case PasswordStrength.VERY_WEAK: return str(_('VERY weak password it's your data not mine'))
+			case PasswordStrength.WEAK: return str(_('STOP it with the weak ass passwords already'))
+			case PasswordStrength.MODERATE: return str(_('moderate It is getting better keep trying'))
+			case PasswordStrength.STRONG: return str(_('strong password I like the way you think'))
 
 	def color(self):
 		match self:
 			case PasswordStrength.VERY_WEAK: return 'red'
-			case PasswordStrength.WEAK: return 'red'
-			case PasswordStrength.MODERATE: return 'yellow'
-			case PasswordStrength.STRONG: return 'green'
+			case PasswordStrength.WEAK: return 'yellow'
+			case PasswordStrength.MODERATE: return 'green'
+			case PasswordStrength.STRONG: return 'blue'
 
 	@classmethod
 	def strength(cls, password: str) -> 'PasswordStrength':
