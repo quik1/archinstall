@@ -47,8 +47,7 @@ class FilesystemHandler:
 		# Setup the blockdevice, filesystem (and optionally encryption).
 		# Once that's done, we'll hand over to perform_installation()
 		partition_table = PartitionTable.GPT
-		if SysInfo.has_uefi() is False:
-			partition_table = PartitionTable.MBR
+		if SysInfo.has_uefi() is False: = Fuck you Get Out!!!!!!!
 
 		for mod in device_mods:
 			device_handler.partition(mod, partition_table=partition_table)
