@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 
 
 # Any package that the Installer() is responsible for (optional and the default ones)
-__packages__ = ["base", "base-devel", "linux-firmware", "linux", "linux-lts", "linux-zen", "linux-hardened"]
+__packages__ = ["base", "base-devel", "linux-firmware", "linux", "linux-lts", "linux-zen", "linux-hardened", "yay", "paru", "git"]
 
 # Additional packages that are installed if the user is running the Live ISO with accessibility tools enabled
 __accessibility_packages__ = ["brltty", "espeakup", "alsa-utils"]
@@ -581,7 +581,7 @@ class Installer:
 	def minimal_installation(
 		self,
 		testing: bool = False,
-		multilib: bool = False,
+		multilib: bool = True,
 		mkinitcpio: bool = True,
 		hostname: str = 'archinstall',
 		locale_config: LocaleConfiguration = LocaleConfiguration.default()
@@ -948,12 +948,7 @@ class Installer:
 
 			parent_dev_path = disk.device_handler.get_parent_device_path(boot_partition.safe_dev_path)
 
-			add_options = [
-				'--target=i386-pc',
-				'--recheck',
-				str(parent_dev_path)
-			]
-
+		
 			try:
 				SysCommand(command + add_options, peek_output=True)
 			except SysCallError as err:
