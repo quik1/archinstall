@@ -173,19 +173,10 @@ class ProfileHandler:
 		packages = []
 		service = None
 
-		match greeter:
-			case GreeterType.LightdmSlick:
-				packages = ['lightdm', 'lightdm-slick-greeter']
-				service = ['lightdm']
-			case GreeterType.Lightdm:
-				packages = ['lightdm', 'lightdm-gtk-greeter']
-				service = ['lightdm']
+		match greeter:	
 			case GreeterType.Sddm:
 				packages = ['sddm']
-				service = ['sddm']
-			case GreeterType.Gdm:
-				packages = ['gdm']
-				service = ['gdm']
+				service = ['sddm']		
 			case GreeterType.Ly:
 				packages = ['ly']
 				service = ['ly']
@@ -196,15 +187,15 @@ class ProfileHandler:
 			install_session.enable_service(service)
 
 		# slick-greeter requires a config change
-		if greeter == GreeterType.LightdmSlick:
-			path = install_session.target.joinpath('etc/lightdm/lightdm.conf')
-			with open(path, 'r') as file:
-				filedata = file.read()
+		# if greeter == GreeterType.LightdmSlick:
+		#	path = install_session.target.joinpath('etc/lightdm/lightdm.conf')
+		#	with open(path, 'r') as file:
+		#		filedata = file.read()
 
-			filedata = filedata.replace('#greeter-session=example-gtk-gnome', 'greeter-session=lightdm-slick-greeter')
+		#	filedata = filedata.replace('#greeter-session=example-gtk-gnome', '')
 
-			with open(path, 'w') as file:
-				file.write(filedata)
+		#	with open(path, 'w') as file:
+		#		file.write(filedata)
 
 	def install_gfx_driver(self, install_session: 'Installer', driver: Optional[GfxDriver]):
 		try:
