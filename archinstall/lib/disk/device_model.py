@@ -107,7 +107,6 @@ class DiskLayoutConfiguration:
 
 class PartitionTable(Enum):
 	GPT = 'gpt'
-	MBR = 'msdos'
 
 
 class Unit(Enum):
